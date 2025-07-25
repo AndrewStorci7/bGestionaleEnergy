@@ -9,15 +9,16 @@
 
 name: ESLint
 
-permissions:
-  contents: read
-  security-events: write
 
 on:
   push:
     branches: ["master"]
   pull_request:
-    branches: ["master"]
+      branches: ["master"]
+      
+permissions:
+  contents: read
+  security-events: write
 
 jobs:
   eslint:
