@@ -3,6 +3,8 @@ import React from "react";
 import Image from 'next/image';
 import { useAlert } from '@main/alert/alertProvider';
 
+import PropTypes from 'prop-types'; // per ESLint
+
 /**
  * Button for wheelman
  * @author Daniele Zeraschi from Oppimittinetworking
@@ -72,3 +74,12 @@ export default function BtnWheelman({
     )
 }
 
+BtnWheelman.propTypes = {
+    baleObj: PropTypes.shape({
+        idBale: PropTypes.number,
+        setIdBale: PropTypes.func,
+        idUnique: PropTypes.number
+    }).isRequired,
+    clickAddHandle: PropTypes.func.isRequired,
+    handleSelect: PropTypes.func.isRequired
+};

@@ -8,6 +8,8 @@ import { useAlert } from '@main/alert/alertProvider';
 import { useWebSocket } from '@main/ws/use-web-socket';
 import SelectInput from './search/select';
 
+import PropTypes from 'prop-types'; // per ESLint
+
 /**
  * @author Andrea Storci from Oppimittinetworking.com
  * 
@@ -18,8 +20,7 @@ import SelectInput from './search/select';
 export default function UpdateValuesBale({ 
     type, 
     objBale, 
-    handlerClose,
-    ...props
+    handlerClose
 }) {
     const { showAlert, hideAlert } = useAlert();
     const { ws, message } = useWebSocket();
@@ -387,3 +388,9 @@ export default function UpdateValuesBale({
         </>
     )
 }
+
+UpdateValuesBale.propTypes = {
+    type: PropTypes.string.isRequired,
+    objBale: PropTypes.object.isRequired,
+    handlerClose: PropTypes.func.isRequired
+};

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { getServerRoute } from '@/app/config';
 import { useWebSocket } from "@/app/components/main/ws/use-web-socket";
 
-export default function RenderCounters({ handler }) {
+export default function RenderCounters() {
 
     const { ws, message } = useWebSocket();
 

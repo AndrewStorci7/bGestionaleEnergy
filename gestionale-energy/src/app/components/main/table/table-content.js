@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import Cookies from 'js-cookie';
 import CheckButton from "../select-button";
 import Icon from "../get-icon";
@@ -6,8 +6,10 @@ import InsertNewBale from '../insert-new-bale';
 import { useAlert } from "@alert/alertProvider";
 
 import { useWebSocket } from "@@/components/main/ws/use-web-socket";
-import { refreshPage, getServerRoute, getBgColor } from '@/app/config';
+import { refreshPage, getServerRoute } from '@/app/config';
 import { fetchDataTotalBale } from '../fetch';
+
+import PropTypes from 'prop-types'; // per ESLint
 
 /**
  * Custom component for handling the data of a bale
@@ -40,12 +42,10 @@ export default function TableContent({
     useFor = 'regular', 
     noData, 
     handleSelect,
-    primary = false, 
-    tableChange = false,
+    primary = false,
     handleError,
     selectedBaleId,
-    style,
-    ...props
+    style
 }) {
     // WebSocket instance
     const { showAlert, hideAlert } = useAlert();
@@ -248,3 +248,16 @@ export default function TableContent({
         </tbody>
     );
 }
+
+TableContent.propTypes = {
+    admin: PropTypes.bool,
+    type: PropTypes.string,
+    add: PropTypes.object,
+    useFor: PropTypes.string,
+    noData: PropTypes.func,
+    handleSelect: PropTypes.func,
+    primary: PropTypes.bool,
+    handleError: PropTypes.func,
+    selectedBaleId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    style: PropTypes.string
+};

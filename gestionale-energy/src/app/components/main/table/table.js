@@ -1,18 +1,17 @@
 'use client'
 
+import React, { useState } from "react";
 import TableWrapper from "./tableWrapper";
 import DownloadReport from "../admin/btn-report"
 import SelectInput from "../search/select";
 import BtnWheelman from "../btn-wheelman";
 import BtnPresser from "../btn-presser";
 import Switch from "../admin/switch";
-
 import { useWebSocket } from "../ws/use-web-socket";
-
 import Image from "next/image";
-
-import { useState } from "react";
 import { refreshPage } from "@/app/config";
+
+import PropTypes from 'prop-types'; // per ESLint
 
 /**
  * Table
@@ -26,7 +25,11 @@ import { refreshPage } from "@/app/config";
  *                          L'oggetto sarà diverso da null quando verrà cliccato il bottone aggiungi  
  * @returns 
  */
-export default function Table({ type, implant, idUser }) {
+export default function Table({ 
+    type, 
+    implant, 
+    idUser 
+}) {
 
     // WebSocket instance
     const { ws, message } = useWebSocket();
@@ -270,3 +273,9 @@ export default function Table({ type, implant, idUser }) {
         }
     }
 }
+
+Table.propTypes = {
+    type: PropTypes.oneOf(['presser', 'wheelman', 'both', 'admin']).isRequired,
+    implant: PropTypes.string,
+    idUser: PropTypes.string
+};

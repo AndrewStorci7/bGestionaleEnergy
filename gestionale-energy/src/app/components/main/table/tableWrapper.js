@@ -1,7 +1,9 @@
 'use client';
-import { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import TableContent from './table-content';
 import TableHeader from './table-header';
+
+import PropTypes from 'prop-types'; // per ESLint
 
 const TableWrapper = ({
     admin = false,
@@ -105,5 +107,15 @@ const TableWrapper = ({
         </div>
     )
 }
+
+TableWrapper.propTypes = {
+    type: PropTypes.oneOf(['presser', 'wheelman', 'both', 'admin']).isRequired,
+    tableContent: PropTypes.shape({
+        handleSelect: PropTypes.func.isRequired,
+        selectedBaleId: PropTypes.string,
+        objAdd: PropTypes.object.isRequired,
+        noData: PropTypes.func.isRequired
+    }).isRequired
+};
 
 export default TableWrapper;

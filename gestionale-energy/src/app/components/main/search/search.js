@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SelectInput from "./select";
 
+import PropTypes from 'prop-types'; // per ESLint
+
 /**
  * Search/filter Component
  * 
@@ -104,5 +106,9 @@ function SearchInput({ type }) {
         </div>
     );
 }
+
+SearchInput.propTypes = {
+    type: PropTypes.string.isRequired
+};
 
 export default React.memo(SearchInput);

@@ -1,11 +1,10 @@
 'use client';
 
-// import { useState } from "react";
+import React, { useState } from "react";
 import SearchInput from "./search/search";
-import AddBale from "./btn-presser";
 import Table from "./table/table";
-import BtnWheelman from "./btn-wheelman";
-import { useState } from "react";
+
+import PropTypes from 'prop-types'; // per ESLint
 
 /**
  * Main Content Component
@@ -15,7 +14,12 @@ import { useState } from "react";
  * 
  * @param {*} props  
  */
-export default function MainContent({ type, implant, idUser, ...props}) {
+export default function MainContent({ 
+    type, 
+    implant, 
+    idUser, 
+    ...props
+}) {
 
     const _CMNSTYLE_DIV_EMPTY = "fixed top-0 left-0 h-screen w-screen"
     const _CMNSTYLE_EMPTY = "text-2xl w-screen h-screen flex justify-center items-center"
@@ -41,3 +45,9 @@ export default function MainContent({ type, implant, idUser, ...props}) {
         </div>
     );
 }
+
+MainContent.propTypes = {
+    type: PropTypes.string.isRequired,
+    implant: PropTypes.string.isRequired,
+    idUser: PropTypes.string.isRequired
+};

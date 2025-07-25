@@ -1,5 +1,7 @@
-import { getServerRoute } from "@/app/config";
 import React, { useEffect, useState } from "react";
+import { getServerRoute } from "@/app/config";
+
+import PropTypes from 'prop-types'; // per ESLint
 
 /**
  * 
@@ -30,9 +32,7 @@ function SelectInput({
     fixedW, 
     value, 
     onChange, 
-    isForSearch = false, 
-    type,
-    ...props 
+    isForSearch = false
 }) {
 
     const fixed_width = (fixedW) && "w-full";
@@ -120,5 +120,15 @@ function SelectInput({
         </select>
     );
 }
+
+SelectInput.propTypes = {
+    disabled: PropTypes.bool,
+    searchFor: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    fixedW: PropTypes.bool,
+    value: PropTypes.any,
+    onChange: PropTypes.func,
+    isForSearch: PropTypes.bool
+};
 
 export default React.memo(SelectInput);

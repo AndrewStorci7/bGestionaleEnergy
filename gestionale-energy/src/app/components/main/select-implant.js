@@ -3,6 +3,8 @@
 import { getServerRoute } from '@@/config';
 import React, { useEffect, useState } from 'react'
 
+import PropTypes from 'prop-types'; // per ESLint
+
 /**
  * Select component that display the available implants
  *  
@@ -12,7 +14,11 @@ import React, { useEffect, useState } from 'react'
  * @param {Object}      ref
  * @param {*}           props
  */
-export default function SelectImplants({ onChange, ref }, props) {
+export default function SelectImplants({ 
+    onChange, 
+    ref, 
+    ...props
+}) {
 
     const [content, setContent] = useState([])
     const [error, setError] = useState("")
@@ -74,3 +80,7 @@ export default function SelectImplants({ onChange, ref }, props) {
     )
 }
 
+SelectImplants.propTypes = {
+    onChange: PropTypes.func.isRequired,
+    ref: PropTypes.object
+};

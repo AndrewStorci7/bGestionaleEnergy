@@ -5,13 +5,13 @@ import SelectInput from './search/select';
 import Cookies from 'js-cookie';
 import { useWebSocket } from "@@/components/main/ws/use-web-socket";
 
+import PropTypes from 'prop-types'; // per ESLint
+
 export default function InsertNewBale({ 
     type, 
-    mod, 
-    ids, 
+    mod,
     primary, 
     confirmHandle,
-    visible = false,
     style,
 }) {
     const { ws } = useWebSocket();
@@ -129,3 +129,11 @@ export default function InsertNewBale({
 
     return type === "presser" ? renderPresserRow() : renderWheelmanRow();
 }
+
+InsertNewBale.propTypes = {
+    type: PropTypes.string.isRequired,
+    mod: PropTypes.bool.isRequired,
+    primary: PropTypes.bool.isRequired,
+    confirmHandle: PropTypes.func.isRequired,
+    style: PropTypes.string.isRequired
+};

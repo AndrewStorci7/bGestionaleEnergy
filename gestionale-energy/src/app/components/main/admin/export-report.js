@@ -1,9 +1,11 @@
 'use client';
-import { useState, useEffect, useActionState } from "react";
+import React, { useState, useEffect, useActionState } from "react";
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import { fetchReportData } from '@@/config';
 import { useAlert } from "../alert/alertProvider";
+
+import PropTypes from "prop-types"; // per ESLint
 
 // formula per arrotondare un numero
 const createRoundingFormula = (sumFormula) => {
@@ -18,7 +20,6 @@ const createRoundingFormula = (sumFormula) => {
  * @param {Date} dateForReport 
  */
 export const handleDownload = async (
-  // hookfetch = fetchReportData,
   data,
   reportInfo,
   dateForReport
@@ -362,6 +363,13 @@ const ExportReport = ({
     </>
   );
 
+};
+
+ExportReport.propTypes = {
+  date: PropTypes.string,
+  reportFor: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 export default ExportReport;

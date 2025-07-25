@@ -1,12 +1,12 @@
 'use client';
 
+import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import Head from "next/head";
 
 import Footer from "@/app/components/footer/foooter";
 import Header from "@/app/components/header/header";
 import MainContent from "@main/main-content";
-import { useEffect, useState } from "react";
 import CheckCookie from "@main/check-cookie";
 
 import { WebSocketProvider } from '@main/ws/use-web-socket';

@@ -12,10 +12,7 @@ import Icon from '../get-icon';
  * @param {any}     children    
  * 
  */
-export default function BtnReport({ 
-  downloadFor, 
-  children 
-}) {
+export default function BtnReport() {
 
   const [date, setDate] = useState(null); // data del report
 
