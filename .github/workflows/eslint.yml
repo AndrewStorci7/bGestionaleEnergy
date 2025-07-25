@@ -9,7 +9,6 @@
 
 name: ESLint
 
-
 on:
   push:
     branches: ["master"]
