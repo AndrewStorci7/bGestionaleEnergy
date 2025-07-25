@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import Head from "next/head";
 
-import Footer from "@/app/components/footer/foooter";
+import Footer from "@/app/components/footer/footer";
 import Header from "@/app/components/header/header";
 import MainContent from "@main/main-content";
 import CheckCookie from "@main/check-cookie";
