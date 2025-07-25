@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useActionState } from "react";
+import React, { useState, useEffect } from "react";
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import { fetchReportData } from '@@/config';
@@ -291,8 +291,8 @@ export const handleDownload = async (
   };
   worksheet.getCell(`J${dimensione + gapFineConteggioCelle}`).value = { formula: `SUM(J5:J${dimensione + gapInizioConteggioCelle})` };
 
-  worksheet.eachRow((row, rowNumber) => {
-    row.eachCell((cell, colNumber) => {
+  worksheet.eachRow((row) => {
+    row.eachCell((cell) => {
       if (cell.value !== 0) {
         cell.font = { name: 'Calibri', bold: true }; // Applica il grassetto se il valore è diverso da 0
       }
@@ -323,6 +323,7 @@ const ExportReport = ({
   reportFor,
   className,
   children,
+  disabled = false,
   ...props
 }) => {
 
@@ -354,7 +355,7 @@ const ExportReport = ({
   return (
     <>
       <button
-        className={`${className} ${props.disabled ? "opacity-60 cursor-not-allowed" : "transition-all hover:bg-sky-700 hover:text-white"}`} 
+        className={`${className} ${disabled ? "opacity-60 cursor-not-allowed" : "transition-all hover:bg-sky-700 hover:text-white"}`} 
         onClick={hookDownload}
         {...props}
       >
@@ -370,6 +371,7 @@ ExportReport.propTypes = {
   reportFor: PropTypes.string.isRequired,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
+  disabled: PropTypes.bool,
 };
 
 export default ExportReport;

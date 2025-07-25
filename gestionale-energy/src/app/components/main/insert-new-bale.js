@@ -12,14 +12,12 @@ export default function InsertNewBale({
     mod,
     primary, 
     confirmHandle,
-    style,
+    style = "",
 }) {
     const { ws } = useWebSocket();
 
     // Stati condivisi
     const [note, setNote] = useState("");
-    const [status, setStatus] = useState("working");
-    const [showConfirm, setShowConfirm] = useState(false);
 
     // Stati Pressista
     const [plastic, setPlastic] = useState("");
@@ -78,8 +76,6 @@ export default function InsertNewBale({
         }
     };
 
-    const handleConfirmed = () => setShowConfirm(prev => !prev);
-
     /**
      * Renderizza la tabella per il Pressista
      */
@@ -135,5 +131,5 @@ InsertNewBale.propTypes = {
     mod: PropTypes.bool.isRequired,
     primary: PropTypes.bool.isRequired,
     confirmHandle: PropTypes.func.isRequired,
-    style: PropTypes.string.isRequired
+    style: PropTypes.string
 };

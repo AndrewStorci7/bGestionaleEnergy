@@ -1,7 +1,8 @@
 'use client';
 
-import { getServerRoute } from '@@/config';
 import React, { useEffect, useState } from 'react'
+import { getServerRoute } from '@@/config';
+import { useAlert } from "@/app/components/main/alert/alertProvider";
 
 import PropTypes from 'prop-types'; // per ESLint
 
@@ -21,12 +22,12 @@ export default function SelectImplants({
 }) {
 
     const [content, setContent] = useState([])
-    const [error, setError] = useState("")
+    const { showAlert } = useAlert();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const url = await getServerRoute("implants");
+                const url = getServerRoute("implants");
                 const resp = await fetch(url, {
                     method: 'GET',
                     headers: {'Content-Type': 'application/json'},
@@ -36,14 +37,18 @@ export default function SelectImplants({
                 if (res.code === 0) {
                     setContent(res.data)
                 } else {
-                    // TODO da cambiare con alert
-                    //setError(`Errore: ${error}`)
-                    // <Alert msg={error}/>
+                    showAlert({
+                        title: "Error",
+                        message: res.message,
+                        type: "error",
+                    });
                 }
             } catch (error) {
-                // TODO da cambiare con alert
-                //setError(`Errore: ${error}`)
-                // <Alert msg={error}/>
+                showAlert({
+                    title: "Error",
+                    message: error.message || "Failed to fetch implants",
+                    type: "error",
+                });
             }
         }
 
@@ -53,15 +58,14 @@ export default function SelectImplants({
     return (
         <select
             ref={ref}
-            // value={}
             onChange={onChange}
             {...props}
         >
             <option value={""}>Seleziona un&apos;impianto</option>
-            {content.map((_m, _i) => {
+            {content.map((_m) => {
                 let value = "", text = "";
                 
-                Object.keys(_m).map((key, __i) => {
+                Object.keys(_m).map((key) => {
                     if (key === "id")
                         value = _m[key];
                     else text = _m[key];

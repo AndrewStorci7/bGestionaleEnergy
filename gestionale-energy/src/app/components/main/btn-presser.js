@@ -30,7 +30,7 @@ export default function BtnPresser({
     clickAddHandle
 }) {
 
-    const { showAlert, hideAlert } = useAlert();
+    const { showAlert } = useAlert();
     const [addWasClicked, setAddWasClicked] = useState(false);
 
     useEffect(() => {

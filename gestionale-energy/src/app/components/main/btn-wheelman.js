@@ -18,11 +18,10 @@ import PropTypes from 'prop-types'; // per ESLint
  */
 
 export default function BtnWheelman({ 
-    baleObj,
-    ...props
+    baleObj
 }) {
 
-    const { showAlert, hideAlert } = useAlert();
+    const { showAlert } = useAlert();
 
     const handleClick = (type) => {
         if (baleObj && baleObj.idBale !== null) {
@@ -80,6 +79,4 @@ BtnWheelman.propTypes = {
         setIdBale: PropTypes.func,
         idUnique: PropTypes.number
     }).isRequired,
-    clickAddHandle: PropTypes.func.isRequired,
-    handleSelect: PropTypes.func.isRequired
 };

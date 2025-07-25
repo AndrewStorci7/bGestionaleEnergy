@@ -38,7 +38,6 @@ function SelectInput({
     const fixed_width = (fixedW) && "w-full";
     const _CMNSTYLE_SELECT = `rounded-md ${fixed_width} text-black border-2 border-gray-300 p-1`;
 
-    const [error, setError] = useState("");
     // Risposta ottenuta dal server
     const [content, setContent] = useState([]);
 
@@ -48,7 +47,7 @@ function SelectInput({
                 if (searchFor === undefined || searchFor === null)
                     return;
 
-                const url = await getServerRoute(searchFor);
+                const url = getServerRoute(searchFor);
 
                 if (url != -1) {
                     const resp = await fetch(url, {
@@ -97,24 +96,16 @@ function SelectInput({
 
                     // Controllo per impostare componente <option> correttamente:
                     // <option value={id}>name</option>
-                    Object.keys(_m).map((key, __i) => {
+                    Object.keys(_m).map((key) => {
                         code += (key === "code" || key === "id") ? _m[key] : "";
                         data = (key === "desc") ? _m[key] : "";
-                        tmp = (key === "desc") ? `\(${_m[key]}\)` : (key !== "plastic_type" && key !== "id") ? _m[key] : "";
+                        tmp = (key === "desc") ? `(${_m[key]})` : (key !== "plastic_type" && key !== "id") ? _m[key] : "";
                         str += tmp + " "; 
                     });
 
-                    return ( 
-                        <option key={"option-" + _i} value={code} data-code={data}>
-                            {str}
-                        </option>
-                    )
+                    return <option key={"option-" + _i} value={code} data-code={data}>{str}</option>
                 } else {
-                    return (
-                        <option key={_m[_i] + _i} value={_m}>
-                            {_m}
-                        </option>
-                    )
+                    return <option key={_m[_i] + _i} value={_m}>{_m}</option>
                 }
             })}
         </select>

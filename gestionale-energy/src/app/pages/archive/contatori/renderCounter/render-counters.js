@@ -5,9 +5,8 @@ import { useWebSocket } from "@/app/components/main/ws/use-web-socket";
 
 export default function RenderCounters() {
 
-    const { ws, message } = useWebSocket();
+    const { message } = useWebSocket();
 
-    const [implant, setImplant] = useState(0);
     const [dataImplantA, setDataA] = useState(null);
     const [dataImplantB, setDataB] = useState(null);
     const [dataTotalA, setDataTotalA] = useState(null);
