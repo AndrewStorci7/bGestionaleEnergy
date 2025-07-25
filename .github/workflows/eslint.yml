@@ -9,6 +9,10 @@
 
 name: ESLint
 
+permissions:
+  contents: read
+  security-events: write
+
 on:
   push:
     branches: ["master"]
