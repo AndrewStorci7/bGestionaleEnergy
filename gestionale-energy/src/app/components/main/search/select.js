@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getServerRoute } from "@/app/config";
+import { useAlert } from "@alert/alertProvider";
 
 import PropTypes from 'prop-types'; // per ESLint
 
@@ -40,6 +41,7 @@ function SelectInput({
 
     // Risposta ottenuta dal server
     const [content, setContent] = useState([]);
+    const { showAlert } = useAlert();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -62,12 +64,16 @@ function SelectInput({
                     const data = await resp.json();
         
                     if (data.code === 0) setContent(data.data);
-                    else setError(data.message);
                 } else {
                     setContent(["In lavorazione", "Cambiato", "Completato"]);
                 }
             } catch (error) {
-                console.log(error);
+                console.log(error.message || "Failed to fetch data");
+                showAlert({
+                    title: "Error",
+                    message: error.message || "Failed to fetch data",
+                    type: "error",
+                });
             }
         }
 

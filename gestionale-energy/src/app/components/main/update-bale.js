@@ -22,7 +22,7 @@ export default function UpdateValuesBale({
     objBale, 
     handlerClose
 }) {
-    const { showAlert, hideAlert } = useAlert();
+    const { showAlert } = useAlert();
     const { ws, message } = useWebSocket();
     
     // Stati per i dati originali (per confronto)

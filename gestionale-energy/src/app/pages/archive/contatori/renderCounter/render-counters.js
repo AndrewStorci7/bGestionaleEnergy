@@ -58,7 +58,7 @@ export default function RenderCounters() {
                     // console.error(res.message);
                 }
             } catch (error) {
-                setError("Error occurred while fetching the data");
+                setError(`Error occurred while fetching the data: ${error.message}`);
                 // console.error(error);
             }
         };

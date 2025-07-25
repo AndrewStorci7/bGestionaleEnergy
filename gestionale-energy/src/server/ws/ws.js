@@ -12,8 +12,7 @@ const console = new Console("WebSocketApp");
  */
 class WebSocketApp {
 
-    constructor(ws, server) {
-        // this.ws = (ws !== null && ws) ? ws : new WebSocket.Server({ server });
+    constructor(ws) {
         this.ws = ws;
     }
 

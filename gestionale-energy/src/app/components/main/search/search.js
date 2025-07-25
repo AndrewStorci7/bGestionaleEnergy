@@ -36,12 +36,12 @@ function SearchInput({ type }) {
                 setLabelTitle(["Cond. balla carrellista", "Magaz. Destinazione"])
                 break;
             }
-            default: { /// TEST start
+            default: {
                 setBgColor("bg-primary_3")
                 setSearchFor(["rei", "selected-b"])
                 setLabelTitle(["Utilizzo REI", "Balla selezionata"])
                 break;
-            } /// TEST end
+            }
         }
     }
 

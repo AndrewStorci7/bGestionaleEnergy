@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from "react";
+import React from "react";
 import SearchInput from "./search/search";
 import Table from "./table/table";
 

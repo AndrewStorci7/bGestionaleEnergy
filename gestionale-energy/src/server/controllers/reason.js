@@ -45,9 +45,9 @@ class Reason extends Common {
      * @param {object} req  object request 
      * @param {object} res  object response 
      */
-    async set(req, res) {
-        // TODO
-    }
+    // async set(req, res) {
+    //     // TODO
+    // }
 }
 
 export default Reason
