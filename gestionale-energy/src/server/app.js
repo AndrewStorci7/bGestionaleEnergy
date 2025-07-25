@@ -22,6 +22,7 @@ if (!fs.existsSync(envFile)) {
 import express from 'express';
 import cors from 'cors';
 import db from './inc/db.js';
+import { WebSocketServer } from 'ws';
 import WebSocketApp from './ws/ws.js';
 import { createServer } from 'http';
 
@@ -62,6 +63,7 @@ wsa.onConnection();
 
 app.use(loginRouter(db));
 
+// app.use(Monitoring(db));
 // HEALTH CHECK ENDPOINT
 app.get('/health', monitoring.healthCheck);
 
