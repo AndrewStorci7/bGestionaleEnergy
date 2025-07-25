@@ -51,4 +51,5 @@ jobs:
         if: runner.os == 'Linux' # Evitiamo duplicati: carichiamo il SARIF solo da Linux
         uses: github/codeql-action/upload-sarif@v3
         with:
+          working-directory: gestionale-energy
           sarif_file: eslint-results.sarif
