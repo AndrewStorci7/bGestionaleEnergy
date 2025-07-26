@@ -10,7 +10,7 @@ import MainContent from "@main/main-content";
 import CheckCookie from "@main/check-cookie";
 
 import { WebSocketProvider } from '@main/ws/use-web-socket';
-import { AlertProvider, useAlert } from "@/app/components/main/alert/alertProvider";
+import { AlertProvider } from "@/app/components/main/alert/alertProvider";
 
 export default function Admin() {
 
@@ -28,7 +28,7 @@ export default function Admin() {
     const [surname, setSurname] = useState("");
     // Tipo utente [ 'admin' | 'presser' | 'wheelman' | 'both' ]
     const [type, setType] = useState("");
-    const { showAlert } = useAlert();
+    // const { showAlert } = useAlert();
     
     useEffect(() => {
         async function fetchData() {
@@ -47,11 +47,11 @@ export default function Admin() {
                 }  
             } catch (error) {
                 console.log(`Error: ${error}`);
-                showAlert({
-                    title: "Error",
-                    message: "Failed to load user data. Please log in again.",
-                    type: "error",
-                });
+                // showAlert({
+                //     title: "Error",
+                //     message: "Failed to load user data. Please log in again.",
+                //     type: "error",
+                // });
             }
         }
 

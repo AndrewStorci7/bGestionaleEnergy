@@ -2,6 +2,8 @@
 
 import React from "react";
 import LoginPage from "@/app/pages/login/page";
+import { WebSocketProvider } from '@main/ws/use-web-socket';
+// import { AlertProvider } from "@/app/components/main/alert/alertProvider";
 
 /**
  * Main Component for the APP
@@ -11,6 +13,10 @@ import LoginPage from "@/app/pages/login/page";
 export default function Home() {
 
 	return (
-		<LoginPage />
+		<WebSocketProvider user={{ user: 'none', name: 'none', surname: 'none' }}>
+			{/* <AlertProvider> */}
+				<LoginPage />
+			{/* </AlertProvider> */}
+		</WebSocketProvider>
 	);
 }

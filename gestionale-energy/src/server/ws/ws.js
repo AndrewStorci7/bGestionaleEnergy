@@ -39,7 +39,7 @@ class WebSocketApp {
                         } 
                         case "new-connection": {
                             // console.info(parsedMessage);
-                            if (parsedMessage.data.user) {
+                            if (parsedMessage.data.user && parsedMessage.data.user !== "none") {
                                 const parser = new UAParser.UAParser(parsedMessage.data.userAgent);
                                 const deviceInfo = {
                                     browser: parser.getBrowser().name || "Unknown",
