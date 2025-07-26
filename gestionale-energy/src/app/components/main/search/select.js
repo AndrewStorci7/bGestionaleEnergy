@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getServerRoute } from "@/app/config";
-import { useAlert } from "@alert/alertProvider";
+import { getServerRoute } from "@config";
+// import { useAlert } from "@alert/alertProvider";
 
 import PropTypes from 'prop-types'; // per ESLint
 
@@ -41,7 +41,7 @@ function SelectInput({
 
     // Risposta ottenuta dal server
     const [content, setContent] = useState([]);
-    const { showAlert } = useAlert();
+    // const { showAlert } = useAlert();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -69,11 +69,11 @@ function SelectInput({
                 }
             } catch (error) {
                 console.log(error.message || "Failed to fetch data");
-                showAlert({
-                    title: "Error",
-                    message: error.message || "Failed to fetch data",
-                    type: "error",
-                });
+                // showAlert({
+                //     title: "Error",
+                //     message: error.message || "Failed to fetch data",
+                //     type: "error",
+                // });
             }
         }
 

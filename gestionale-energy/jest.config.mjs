@@ -202,6 +202,8 @@ const config = {
   moduleNameMapper: {
     "^@@/(.*)$": "<rootDir>/src/app/$1",  // mappa @@/qualcosa a src/app/qualcosa
     "^@/(.*)$": "<rootDir>/src/$1",        // mappa @/qualcosa a src/qualcosa
+    "^@main/(.*)$": "<rootDir>/src/app/components/main/$1", // mappa @main/qualcosa a src/app/components/main/qualcosa
+    "^@config": "<rootDir>/src/app/config.js", //
   },
 };
 

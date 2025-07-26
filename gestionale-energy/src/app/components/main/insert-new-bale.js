@@ -1,7 +1,7 @@
 'use-client';
-import { getServerRoute, refreshPage, isWebSocketConnected } from '@/app/config';
+import { getServerRoute, refreshPage, isWebSocketConnected } from '@config';
 import React, { useState } from 'react';
-import SelectInput from './search/select';
+import SelectInput from '@main/search/select';
 import Cookies from 'js-cookie';
 import { useWebSocket } from "@@/components/main/ws/use-web-socket";
 

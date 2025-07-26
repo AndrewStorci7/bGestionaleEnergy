@@ -13,6 +13,10 @@ jest.mock("js-cookie", () => ({
     get: jest.fn(() => JSON.stringify({ id_implant: "impianto-123" })),
 }));
 
+jest.mock("@@/components/main/ws/use-web-socket", () => ({
+    useWebSocket: () => ({ message: "test message" }),
+}));
+
 global.fetch = jest.fn((url) =>
     Promise.resolve({
         ok: true,
@@ -48,71 +52,3 @@ describe("Header component", () => {
         expect(mockPush).toHaveBeenCalledWith("/pages/login");
     });
 });
-
-
-// import React from "react";
-// import { render, screen, fireEvent } from "@testing-library/react";
-// import Header from "../src/app/components/header/header.js";
-
-// const mockPush = jest.fn();
-
-// jest.mock("next/navigation", () => ({
-//     useRouter: () => ({
-//         push: mockPush,
-//     }),
-// }));
-
-// // MOCK di js-cookie
-// jest.mock("js-cookie", () => ({
-//     get: jest.fn(() => JSON.stringify({ id_implant: "impianto-123" })),
-//     remove: jest.fn(),
-// }));
-
-// // MOCK del tuo hook useWebSocket
-// jest.mock("../src/app/components/main/ws/use-web-socket", () => ({
-//     useWebSocket: () => ({ message: "test message" }),
-// }));
-
-// // Mock globale per fetch
-// global.fetch = jest.fn(() =>
-//     Promise.resolve({
-//         ok: true,
-//         json: () =>
-//         Promise.resolve({
-//             code: 0,
-//             message: 10,
-//             message2: 5,
-//         }),
-//     })
-// );
-
-// describe("Header component", () => {
-//     it("renders correctly with props and displays basic info", async () => {
-//         render(<Header implant="impianto-123" username="Mario" type="presser" />);
-
-//         expect(screen.getByText("impianto-123")).toBeInTheDocument();
-//         expect(screen.getByText("Mario")).toBeInTheDocument();
-
-//         const balleInserite = await screen.findByText(/Balle inserite:/);
-//         expect(balleInserite).toBeInTheDocument();
-
-//         const balleProdotte = screen.getByText(/Balle prodotte:/);
-//         expect(balleProdotte).toBeInTheDocument();
-
-//         const totaleChili = screen.getByText(/Totale chili:/);
-//         expect(totaleChili).toBeInTheDocument();
-//     });
-
-//     it("calls logout on button click", () => {
-//         const Cookies = require("js-cookie");
-
-//         render(<Header implant="impianto-123" username="Mario" type="presser" />);
-        
-//         const button = screen.getByRole("button");
-//         fireEvent.click(button);
-
-//         expect(Cookies.remove).toHaveBeenCalled();
-//         expect(mockPush).toHaveBeenCalledWith("/pages/login");
-//     });
-
-// });

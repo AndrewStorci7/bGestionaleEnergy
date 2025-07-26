@@ -336,7 +336,7 @@ const ExportReport = ({
   }, [date])
 
   const hookDownload = async () => {
-    if (date === null || date === undefined) {
+    if (!dateForReport) {
       showAlert({
         title: null,
         message: "Devi selezionare una data",
@@ -353,15 +353,13 @@ const ExportReport = ({
   }
 
   return (
-    <>
-      <button
-        className={`${className} ${disabled ? "opacity-60 cursor-not-allowed" : "transition-all hover:bg-sky-700 hover:text-white"}`} 
-        onClick={hookDownload}
-        {...props}
-      >
-        {children}
-      </button>
-    </>
+    <button
+      className={`${className} ${disabled ? "opacity-60 cursor-not-allowed" : "transition-all hover:bg-sky-700 hover:text-white"}`} 
+      onClick={hookDownload}
+      {...props}
+    >
+      {children}
+    </button>
   );
 
 };
